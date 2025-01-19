@@ -99,14 +99,16 @@
 <div class="col-12 {{if eq $columns "2"}}col-lg-8{{end}}">
 
   {{/* Add the full-width banner */}}
-  <div class="collection-banner w-100 mb-4">
-    <img src="publications_banner.png" alt="Publications Banner" style="width: 100%; height: auto;">
+  <div class="collection-banner w-100 mb-4" style="background-color: #f0f0f0;">
+    <img src="/uploads/publications_banner.png" alt="Publications Banner" style="width: 100%; height: 300px; object-fit: cover;">
+    <div style="text-align: center; background-color: #ff0000; color: white; padding: 10px;">
+      If you can't see the banner above, check that 'publications_banner.png' exists in your 'static/uploads/' folder
+    </div>
   </div>
 
   {{ with $block.content.text }}{{ . | emojify | $page.RenderString }}{{ end }}
 
   {{ range $index, $item := $query }}
-    {{/* Modified render_view call to exclude featured image */}}
     {{ partial "functions/render_view" (dict "page" $block "item" . "view" "compact" "hide_featured_image" true "index" $index) }}
   {{end}}
 
